@@ -174,6 +174,11 @@ if __name__ == "__main__":
     print(" [Done] 模型训练完成")
     print(f"总训练用时: {time.time() - start_time:.2f} 秒")
 
+    # 保存模型
+    model_path = "mnist_cnn.pt"
+    torch.save(model.state_dict(), model_path)
+    print(f"[Info] 模型已保存为: {model_path}")
+
     # 绘图
     plt.figure(figsize=(12, 5))
     plt.subplot(121)

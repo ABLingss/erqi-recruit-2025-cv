@@ -63,7 +63,7 @@ if __name__ == "__main__":
     output_size = 10
     learning_rate = 0.1
     batch_size = 64
-    num_epochs = 5
+    num_epochs = 10
     # =========================================================
 
     # GPU 配置
@@ -110,6 +110,11 @@ if __name__ == "__main__":
 
     print(" [Done] 模型训练完成")
     print(f"总训练用时: {time.time() - start_time:.2f} 秒")
+
+    # 保存模型
+    model_path = "mnist_ann_cuda.pt"
+    torch.save(model.state_dict(), model_path)
+    print(f"[Info] 模型已保存为: {model_path}")
 
     # 绘制曲线
     plt.figure(figsize=(12, 5))
