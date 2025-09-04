@@ -1,0 +1,6 @@
+# requirements.txt  纯CPU版，请自行配置cuda后重新安装torch torchvision，参考https://pytorch.org/get-started/locally/
+torch
+torchvision
+matplotlib
+tqdm
+scikit-learn
