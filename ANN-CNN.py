@@ -10,38 +10,6 @@ import time
 
 # ================= CNN 网络 =================
 class CNN(nn.Module):
-    """
-    CNN 手写数字分类网络（用于 MNIST 数据集）
-
-    网络结构：
-    1. conv1 -> bn1 -> ReLU -> MaxPool1
-        - 输入：28x28 灰度图 (1 channel)
-        - 输出：32 个 14x14 特征图
-        - 作用：提取低级特征并进行归一化和非线性映射
-    2. conv2 -> bn2 -> ReLU -> MaxPool2
-        - 输入：32 个 14x14 特征图
-        - 输出：64 个 7x7 特征图
-        - 作用：提取更高层次特征，缩小空间维度
-    3. Flatten
-        - 将 64x7x7 特征图展平为一维向量
-    4. fc1 -> ReLU -> Dropout
-        - 全连接层，128 个神经元
-        - Dropout 用于防止过拟合
-    5. fc2
-        - 输出层，10 个神经元，对应 0-9 数字类别
-        - CrossEntropyLoss 内部会应用 softmax
-    
-    可调参数：
-    - dropout_rate: 控制 fc1 后的 Dropout 概率
-    - num_classes: 输出类别数量，MNIST 为 10
-
-    实现要求：
-    1. 使用 nn.Conv2d, nn.BatchNorm2d, nn.ReLU, nn.MaxPool2d, nn.Linear, nn.Dropout
-    2. 输入图像大小固定为 28x28，灰度图
-    3. 输出 logits，不需要 softmax
-    4. 支持 GPU 训练，forward 中数据形状需保持正确
-    5. Dropout 只在训练阶段生效
-    """
     def __init__(self, num_classes=10, dropout_rate=0.5):
         super(CNN, self).__init__()
         # 第一卷积块：卷积 -> 批归一化 -> ReLU -> 最大池化
